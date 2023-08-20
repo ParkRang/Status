@@ -7,7 +7,7 @@ public class mainApp {
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		//dbConnection d = new dbConnection();
-		Frame F = new Frame();
+		Frame frame = new Frame();
 		
 	}
 
