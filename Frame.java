@@ -23,90 +23,84 @@ import javax.swing.JTextField;
 public class Frame extends JFrame {
 	
 	Frame() throws SQLException{
-		dbConnection d = new dbConnection();
+		dbConnection dbconnection = new dbConnection();
 		SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		//String ys = SDF.format(new Date());
-		//System.out.println(ys);
-		setTitle("¿¸¿˚ ±‚∑œ");
+		setTitle("Ï†ÑÏ†Å Í∏∞Î°ù");
 		setSize(800, 600);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Container c = getContentPane();
-		//JPanel c = new JPanel();
-		c.setLayout(new FlowLayout());
-		//c.setLayout(new BorderLayout());
+		Container container = getContentPane();
+		container.setLayout(new FlowLayout());
 		
-		JLabel L1 = new JLabel("ID");
+		JLabel label1 = new JLabel("ID");
 		JTextField TF1 = new JTextField(10);
-		JLabel L2 = new JLabel("  ¡æ¡∑");
+		JLabel label2 = new JLabel("  Ï¢ÖÏ°±");
 		JTextField TF2 = new JTextField(1);
-		JLabel L3 = new JLabel("  ªÛ¥Î");
+		JLabel label3 = new JLabel("  ÏÉÅÎåÄ");
 		JTextField TF3 = new JTextField(1);
-		JRadioButton W, L;
-		W = new JRadioButton("Ω¬");
-		L = new JRadioButton("∆–");
-		ButtonGroup g = new ButtonGroup();
-		g.add(W);
-		g.add(L);
-		JLabel L4 = new JLabel("  ∆˜¿Œ∆Æ");
+		JRadioButton win, lose;
+		win = new JRadioButton("Ïäπ");
+		lose = new JRadioButton("Ìå®");
+		ButtonGroup buttonGroup = new ButtonGroup();
+		buttonGroup.add(win);
+		buttonGroup.add(lose);
+		JLabel label4 = new JLabel("  Ìè¨Ïù∏Ìä∏");
 		JTextField TF4 = new JTextField(4);
-		JLabel L5 = new JLabel("  ∏ ");
-		JLabel L6 = new JLabel("ID                    ¡æ¡∑                     ªÛ¥Î                       Ω¬∆–                      ¡°ºˆ                     ∏                           Ω√∞£                                  ");
+		JLabel label5 = new JLabel("  Îßµ");
+		JLabel label6 = new JLabel("ID                    Ï¢ÖÏ°±                     ÏÉÅÎåÄ                       ÏäπÌå®                      Ï†êÏàò                     Îßµ                          ÏãúÍ∞Ñ                                  ");
 		JTextField TF5 = new JTextField(10);
 		JTextArea TA = new JTextArea(25, 60);
-		JScrollPane SP = new JScrollPane(TA, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
+		JScrollPane scrollPane = new JScrollPane(TA, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, 
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		JButton b1 = new JButton("  ¿¸¿˚»Æ¿Œ");
-		JButton b2 = new JButton("  ¿¸¿˚±‚∑œ");
+		JButton button1 = new JButton("  Ï†ÑÏ†ÅÌôïÏù∏");
+		JButton button2 = new JButton("  Ï†ÑÏ†ÅÍ∏∞Î°ù");
 		
-		JButton b3 = new JButton("¿¸¿˚√ ±‚»≠");
+		JButton button3 = new JButton("Ï†ÑÏ†ÅÏ¥àÍ∏∞Ìôî");
 		JTextField TF6 = new JTextField(8);
-		JButton b4 = new JButton("æ∆¿Ãµ ∞Àªˆ");
-		JButton b5 = new JButton("Ω¬∑¸ ∞ËªÍ");
-		//L6.setSize(5000, 100);
-		c.add(L1);
-		c.add(TF1);
-		c.add(L2);
-		c.add(TF2);
-		c.add(L3);
-		c.add(TF3);
-		c.add(W);
-		c.add(L);
-		c.add(L4);
-		c.add(TF4);
-		c.add(L5);
-		c.add(TF5);
-		c.add(b1);
-		c.add(b2);
-		c.add(L6);
-		c.add(TA);
-		c.add(SP);
-		c.add(b3);
-		c.add(TF6);
-		c.add(b4);
-		c.add(b5);
-		SP.setViewportView(TA);
+		JButton button4 = new JButton("ÏïÑÏù¥Îîî Í≤ÄÏÉâ");
+		JButton button5 = new JButton("ÏäπÎ•† Í≥ÑÏÇ∞");
+		container.add(label1);
+		container.add(TF1);
+		container.add(label2);
+		container.add(TF2);
+		container.add(label3);
+		container.add(TF3);
+		container.add(win);
+		container.add(lose);
+		container.add(label4);
+		container.add(TF4);
+		container.add(label5);
+		container.add(TF5);
+		container.add(button1);
+		container.add(button2);
+		container.add(label6);
+		container.add(TA);
+		container.add(scrollPane);
+		container.add(button3);
+		container.add(TF6);
+		container.add(button4);
+		container.add(button5);
+		scrollPane.setViewportView(TA);
 		
 		
 		setVisible(true);
-		b1.addActionListener(new ActionListener() {
+		button1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				//int i = d.count();
-				d.showStatus();
+				dbconnection.showStatus();
 				TA.setText("");
 				try {
-					while(d.rs.next()) {
-					String id = d.rs.getString("id");
-					String i = d.rs.getString("myPTZ");
-					String e = d.rs.getString("enemyPTZ");
-					String WL = d.rs.getString("WinLose");
-					int LP = d.rs.getInt("LP");
-					String map = d.rs.getString("MAP");
-					String Ys = d.rs.getString("YMDHMS");
-					TA.append(id + "\t"+ i + "\t" + e + 
+					while(dbconnection.rs.next()) {
+					String id = dbconnection.rs.getString("id");
+					String my = dbconnection.rs.getString("myPTZ");
+					String enemy = dbconnection.rs.getString("enemyPTZ");
+					String WL = dbconnection.rs.getString("WinLose");
+					int LP = dbconnection.rs.getInt("LP");
+					String map = dbconnection.rs.getString("MAP");
+					String Ys = dbconnection.rs.getString("YMDHMS");
+					TA.append(id + "\t"+ my + "\t" + enemy + 
 							"\t" + WL + "\t" + LP
 							+ "\t" + map + "\t" + Ys+"\n");
 					}
@@ -115,67 +109,67 @@ public class Frame extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				d.dbClose();
+				dbconnection.dbClose();
 			}
 			
 		});
-		b2.addActionListener(new ActionListener() {
+		button2.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String WL = "";
 				
-				int p = 0;
+				int point = 0;
 				String ys = SDF.format(new Date());
-				p = Integer.parseInt(TF4.getText());
-				if(W.isSelected()) {
-					WL = "Ω¬∏Æ";
-				d.update(TF1.getText(), TF2.getText().toUpperCase(), 
+				point = Integer.parseInt(TF4.getText());
+				if(win.isSelected()) {
+					WL = "ÏäπÎ¶¨";
+				dbconnection.update(TF1.getText(), TF2.getText().toUpperCase(), 
 						TF3.getText().toUpperCase(), WL, 
-						p, TF5.getText(), ys);
+						point, TF5.getText(), ys);
 				}
 				else { 
-					WL = "∆–πË";
-				d.update(TF1.getText(), TF2.getText().toUpperCase(), 
+					WL = "Ìå®Î∞∞";
+				dbconnection.update(TF1.getText(), TF2.getText().toUpperCase(), 
 						TF3.getText().toUpperCase(), WL, 
-						p, TF5.getText(), ys);
+						point, TF5.getText(), ys);
 				}
 				TF2.setText("");
 				TF3.setText("");
 				TF4.setText("");
 				TF5.setText("");
-				g.clearSelection();
+				buttonGroup.clearSelection();
 			}
 			//d.dbClose();
 		});
-		b3.addActionListener(new ActionListener() {
+		button3.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				d.deleteAll();
+				dbconnection.deleteAll();
 				TA.setText("");
 			}
 			
 		});
-		b4.addActionListener(new ActionListener() {
+		button4.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				String sId = TF6.getText();
 				TA.setText("");
-				d.idSearch(sId);
+				dbconnection.idSearch(sId);
 				try {
-					while(d.rs.next()) {
-					String id = d.rs.getString("id");
-					String i = d.rs.getString("myPTZ");
-					String en = d.rs.getString("enemyPTZ");
-					String WL = d.rs.getString("WinLose");
-					int LP = d.rs.getInt("LP");
-					String map = d.rs.getString("MAP");
-					String Ys = d.rs.getString("YMDHMS");
-					TA.append(id + "\t"+ i + "\t" + en + 
+					while(dbconnection.rs.next()) {
+					String id = dbconnection.rs.getString("id");
+					String my = dbconnection.rs.getString("myPTZ");
+					String enemy = dbconnection.rs.getString("enemyPTZ");
+					String WL = dbconnection.rs.getString("WinLose");
+					int LP = dbconnection.rs.getInt("LP");
+					String map = dbconnection.rs.getString("MAP");
+					String Ys = dbconnection.rs.getString("YMDHMS");
+					TA.append(id + "\t"+ my + "\t" + enemy + 
 							"\t" + WL + "\t" + LP
 							+ "\t" + map + "\t" + Ys+"\n");
 					}
@@ -184,31 +178,31 @@ public class Frame extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				d.dbClose();
+				dbconnection.dbClose();
 			}
 			
 		});
 		
-		b5.addActionListener(new ActionListener() {
+		button5.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				String sId = TF6.getText();
-				d.winRate(sId);
+				dbconnection.winRate(sId);
 				try {
-					while(d.rs.next()) {
-						String en = d.rs.getString(1);
-						String sW = d.rs.getString(2);
-						String sL = d.rs.getString(3);
-						double r = d.rs.getDouble(4)*100;
-						TA.append("vs " + en+"\tΩ¬∏Æ : "+ sW + "\t∆–πË : "
-						+ sL +"\tΩ¬∑¸ : " + r + "%\n" );
+					while(dbconnection.rs.next()) {
+						String enemy = dbconnection.rs.getString(1);
+						String sWin = dbconnection.rs.getString(2);
+						String sLose = dbconnection.rs.getString(3);
+						double rate = dbconnection.rs.getDouble(4)*100;
+						TA.append("vs " + enemy+"\tÏäπÎ¶¨ : "+ sWin + "\tÌå®Î∞∞ : "
+						+ sLose +"\tÏäπÎ•† : " + rate + "%\n" );
 					}
 				} catch(SQLException e) {
 					e.printStackTrace();
 				}
-				d.dbClose();
+				dbconnection.dbClose();
 			}
 			
 		});
